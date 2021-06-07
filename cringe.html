@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cringe</title>
+    </head>
+    <body>
+        <h2>Press this button to use <i>Cringe Alarm</i></h2>
+        <button onclick="cringeAlarm()">Cringe Alarm</button>
+    </body>
+</html>
+<script>
+    function cringeAlarm(){
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Cookie", "__dcfduid=b84ae564190346e69b1981061304a72a");
+
+        var raw = JSON.stringify({"content":"https://tenor.com/view/dies-of-cringe-cringe-gif-20747133"});
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch("https://discord.com/api/webhooks/851479164544614470/9L_U1OPk12YjzfWmdnFtXVX5klp8zx_mDYBtPFyjiCFCt5vgJaeey7g-MI0coQbLa48K", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Cookie", "__dcfduid=b84ae564190346e69b1981061304a72a");
+
+        var raw = JSON.stringify({"content":"No cringe accepted, please stop!"});
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch("https://discord.com/api/webhooks/851479164544614470/9L_U1OPk12YjzfWmdnFtXVX5klp8zx_mDYBtPFyjiCFCt5vgJaeey7g-MI0coQbLa48K", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+</script>
