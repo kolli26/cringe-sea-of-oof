@@ -3,6 +3,7 @@
     <head>
         <title>Cringe</title>
         <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <h2 class="rainbow">Press this button to use <i>Cringe Alarm</i></h2>
@@ -19,6 +20,19 @@
     </body>
 </html>
 <script>
+    var input = document.getElementById("uid");
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("submitButton").click();
+            input.value = ""
+        }
+    });
+
     function checkNum(){
         const value = document.getElementById("uid").value
         console.log(value)
