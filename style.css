@@ -1,61 +1,70 @@
-:root{
+:root {
     --light-blue: rgb(228, 245, 245);
     --blue: rgb(0, 255, 255);
 }
 
-.err{
+.err {
     color: crimson;
     display: none;
 }
 
-.button{
+.button {
     border-style: solid;
     border-color: cyan;
     border-radius: 10px;
     background: red;
-    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+    background: -webkit-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
     background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
     background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to left, orange , yellow, green, cyan, blue, violet);
+    background: linear-gradient(to left, orange, yellow, green, cyan, blue, violet);
 }
 
-.rainbow{
+.rainbow {
     background: red;
-    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+    background: -webkit-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
     background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
     background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to left, orange , yellow, green, cyan, blue, violet);
+    background: linear-gradient(to left, orange, yellow, green, cyan, blue, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-body{
+body {
     height: 200px;
-    background: red; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(right, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(left, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(left, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
+    background: red;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
+    /* Standard syntax (must be last) */
 }
 
-#uid{
+#uid {
     border-color: var(--blue);
     border-style: solid;
     border-radius: 5px;
     background-color: var(--light-blue);
 }
 
-#form{
+#selectuids {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: var(--blue);
+}
+
+#form {
     width: fit-content;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
     background-color: var(--light-blue);
     border-style: solid;
-    border-width:  10px;
+    border-width: 10px;
     border-color: var(--blue);
 }
 
-@media screen and (max-width: 400px) {
-        
-}
+@media screen and (max-width: 400px) {}
