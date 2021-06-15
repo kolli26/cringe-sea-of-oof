@@ -29,14 +29,17 @@
         <br id="err2" class="err">
         <br id="err3" class="err">
         <label>
-            <input class="radio" type="radio" name="attachment" value="https://tenor.com/view/dies-of-cringe-cringe-gif-20747133" checked>
+            <input oninput="setTo0()" class="radio" type="radio" name="attachment" value="https://tenor.com/view/dies-of-cringe-cringe-gif-20747133" checked>
             <img class="radioimg" src="gif.gif">
         </label>
         <label>
-            <input class="radio" type="radio" name="attachment" value="https://imgur.com/a/mo79tcf">
+            <input oninput="setTo1()" class="radio" type="radio" name="attachment" value="https://imgur.com/a/mo79tcf">
             <img class="radioimg" src="kringet.jpeg">
         </label>
         <br>
+        <br>
+        <input type="url" name="customAttachment" id="customAttachment" placeholder="custom attachment" oninput="checkCusAttInput()">
+        <br>    
         <br>
         <button id="submitButton" class="button" onclick="cringeAlarm()">Cringe Alarm</button>
     </div>
@@ -44,6 +47,54 @@
 
 </html>
 <script>
+    document.cookie = "lastImg=0"
+    function setTo0(){
+        document.cookie = "lastImg=0"
+    }
+    function setTo1(){
+        document.cookie = "lastImg=1"
+    }
+
+    function checkCusAttInput(){
+        //console.log(lastImg)
+        var lastImg = getCookie("lastImg")
+        console.log(lastImg)
+        if(document.getElementById("customAttachment").value !== ""){
+            console.log("if")
+            var imgs = document.getElementsByName('attachment');
+            for(var i = 0; i < imgs.length; i++){
+                if(imgs[i].checked){
+                    imgs[i].checked = false
+                    console.log(document.cookie)
+                }
+            }
+        } else if (document.getElementById("customAttachment").value === ""){
+            console.log("elseif")
+            var imgs = document.getElementsByName('attachment');
+            imgs[lastImg].checked = true
+        } else {
+            console.log("else")
+            document.getElementsByName('attachment').checked = true
+            
+        }
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
     var input = document.getElementById("uid");
     // Execute a function when the user releases a key on the keyboard
     input.addEventListener("keyup", function(event) {
@@ -86,18 +137,25 @@
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Cookie", "__dcfduid=b84ae564190346e69b1981061304a72a");
-
-        var imgs = document.getElementsByName('attachment');
-        var selectedimg;
-        for(var i = 0; i < imgs.length; i++){
-            if(imgs[i].checked){
-                selectedimg = imgs[i].value;
+        if(document.getElementById("customAttachment").value === ""){
+            var imgs = document.getElementsByName('attachment');
+            var selectedimg;
+            for(var i = 0; i < imgs.length; i++){
+                if(imgs[i].checked){
+                    selectedimg = imgs[i].value;
+                }
             }
+            var raw = JSON.stringify({
+                "content": selectedimg
+            });
+        } else {
+            var raw = JSON.stringify({
+                "content": document.getElementById("customAttachment").value
+            });  
+            document.getElementById("customAttachment").value = ""
         }
 
-        var raw = JSON.stringify({
-            "content": selectedimg
-        });
+        
 
         var requestOptions = {
             method: 'POST',
